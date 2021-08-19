@@ -126,8 +126,7 @@ async function updateBpAddress(destinationConfiguration, accessToken, headers, b
                 'Authorization': `Basic ${accessToken}`,
                 'Content-Type': 'application/json',
                 'x-csrf-token': headers.token,
-                'Cookie': headers.cookie,
-                'SAP-Connectivity-SCC-Location_ID': destinationConfiguration.CloudConnectorLocationId  
+                'Cookie': headers.cookie
             },
             data: {
                 "PostalCode": bpDetails.postalCode,
@@ -152,8 +151,7 @@ async function updateBp(destinationConfiguration, accessToken, headers, bpDetail
                 'Authorization': `Basic ${accessToken}`,
                 'Content-Type': 'application/json',
                 'x-csrf-token': headers.token,
-                'Cookie': headers.cookie,
-                 'SAP-Connectivity-SCC-Location_ID': destinationConfiguration.CloudConnectorLocationId
+                'Cookie': headers.cookie
             },
             data: {
                 "SearchTerm1": bpDetails.searchTerm1,
@@ -182,8 +180,7 @@ async function postGeneratedImage(destinationConfiguration, accessToken, headers
                         'BusinessObjectTypeName': businessObjectTypeName,
                         'LinkedSAPObjectKey': bp.padStart(10,0),
                         'x-csrf-token': headers.token,
-                        'Cookie': headers.cookie,
-                        'SAP-Connectivity-SCC-Location_ID': destinationConfiguration.CloudConnectorLocationId
+                        'Cookie': headers.cookie
                     },
                     data: image,
                 }).then(response =>{
