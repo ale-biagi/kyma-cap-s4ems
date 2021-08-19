@@ -168,14 +168,16 @@ async function updateBp(destinationConfiguration, accessToken, headers, bpDetail
 async function postGeneratedImage(destinationConfiguration, accessToken, headers, bpDetails, destinationNameFromContext) {
     const attachmentSrvApi = destinationNameFromContext.attachmentSrvApi;
     const businessObjectTypeName = destinationNameFromContext.businessObjectTypeName;
-            return await generateQRCode(bpDetails).then(async image =>{
+            return await generateQRCode(bpDetails).then(async image => {
                 const bp = bpDetails.businessPartner;
+                console.log(bp);
+                console.log(image);
                 return await axios({
                     method: 'post',
                     url: destinationConfiguration.URL + "/sap/opu/odata/sap/" + attachmentSrvApi+ "/AttachmentContentSet",
                     headers: {
                         'Authorization': `Basic ${accessToken}`,
-                        'Content-Type': 'Image/jpg',
+                        'Content-Type': 'image/jpg',
                         'Slug': bp + '.jpg',
                         'BusinessObjectTypeName': businessObjectTypeName,
                         'LinkedSAPObjectKey': bp.padStart(10,0),
