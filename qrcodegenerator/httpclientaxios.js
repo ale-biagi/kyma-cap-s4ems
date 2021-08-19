@@ -170,8 +170,6 @@ async function postGeneratedImage(destinationConfiguration, accessToken, headers
     const businessObjectTypeName = destinationNameFromContext.businessObjectTypeName;
             return await generateQRCode(bpDetails).then(async image => {
                 const bp = bpDetails.businessPartner;
-                console.log(bp);
-                console.log(image);
                 return await axios({
                     method: 'post',
                     url: destinationConfiguration.URL + "/sap/opu/odata/sap/" + attachmentSrvApi+ "/AttachmentContentSet",
