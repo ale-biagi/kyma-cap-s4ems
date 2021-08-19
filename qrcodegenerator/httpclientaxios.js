@@ -94,8 +94,7 @@ async function fetchXsrfToken(destinationConfiguration, accessToken, bpDetails, 
             url: destinationConfiguration.URL  + "/sap/opu/odata/sap/" + businessPartnerSrvApi+"/A_BusinessPartnerAddress",
             headers: {
                 'Authorization': `Basic ${accessToken}`,
-                'x-csrf-token': 'fetch',
-                'SAP-Connectivity-SCC-Location_ID': destinationConfiguration.CloudConnectorLocationId 
+                'x-csrf-token': 'fetch'
             }
         }).then(response => {
                 var cookies = '"';
@@ -111,7 +110,7 @@ async function fetchXsrfToken(destinationConfiguration, accessToken, bpDetails, 
              console.log("success fetching xsrf token");
                 return headers;
         }).catch(error => {
-            console.log("erro rin fetching xsrf token");
+            console.log("error in fetching xsrf token");
             logger.info("Error - Fetching CSRF token Error");
              
             throw util.errorHandler(error, logger);
@@ -128,7 +127,7 @@ async function updateBpAddress(destinationConfiguration, accessToken, headers, b
                 'Content-Type': 'application/json',
                 'x-csrf-token': headers.token,
                 'Cookie': headers.cookie,
-                 'SAP-Connectivity-SCC-Location_ID': destinationConfiguration.CloudConnectorLocationId  
+                'SAP-Connectivity-SCC-Location_ID': destinationConfiguration.CloudConnectorLocationId  
             },
             data: {
                 "PostalCode": bpDetails.postalCode,
